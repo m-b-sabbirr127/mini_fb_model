@@ -27,7 +27,7 @@
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, var(--background), #dfe4ea);
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
             overflow-x: hidden;
         }
 
@@ -39,7 +39,7 @@
 
         .header {
             background: var(--card-bg);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 20px;
             box-shadow: var(--shadow);
             backdrop-filter: blur(12px);
@@ -47,17 +47,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            position: sticky;
+            top: 10px;
+            z-index: 10;
         }
 
         @keyframes slideIn {
-            from { transform: translateY(50px); opacity: 0; }
+            from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
 
         h1 {
             color: var(--primary);
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             background-clip: text;
@@ -68,24 +71,25 @@
 
         .create-post {
             background: var(--card-bg);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 20px;
             box-shadow: var(--shadow);
             backdrop-filter: blur(12px);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             animation: fadeIn 0.5s ease;
         }
 
         .create-post textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px;
             border: 2px solid #ecf0f1;
             border-radius: 10px;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
             transition: var(--transition);
             background: rgba(245, 245, 247, 0.7);
             resize: vertical;
             margin-bottom: 1rem;
+            min-height: 80px;
         }
 
         .create-post textarea:focus {
@@ -96,24 +100,25 @@
 
         .button-group {
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         button, label {
-            padding: 12px 24px;
+            padding: 10px 20px;
             border: none;
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            min-width: 120px;
+            min-width: 100px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             position: relative;
             overflow: hidden;
             color: white;
+            flex: 1;
         }
 
         button::after, label::after {
@@ -130,8 +135,8 @@
         }
 
         button:hover::after, label:hover::after {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
         }
 
         button:hover, label:hover {
@@ -139,33 +144,28 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .post-btn {
-            background: linear-gradient(45deg, var(--primary), #165dbb);
+        .post-btn { background: linear-gradient(45deg, var(--primary), #165dbb); }
+        .image-btn { background: linear-gradient(45deg, #2ecc71, #27ae60); }
+        .nigga-mode-btn { 
+            background: linear-gradient(45deg, #8e44ad, #732d91); 
+            padding: 10px 20px; /* Matches .post-btn */
+            min-width: 100px; /* Matches .post-btn */
+            font-size: clamp(0.8rem, 2.5vw, 1rem); /* Matches .post-btn */
         }
-
-        .image-btn {
-            background: linear-gradient(45deg, #2ecc71, #27ae60);
-        }
-
-        .theme-btn {
-            background: linear-gradient(45deg, #8e44ad, #732d91);
-        }
-
-        .report-btn {
-            background: linear-gradient(45deg, #95a5a6, #7f8c8d);
-        }
-
-        .live-btn {
-            background: linear-gradient(45deg, #e74c3c, #c0392b);
-        }
+        .report-btn { background: linear-gradient(45deg, #95a5a6, #7f8c8d); }
+        .live-btn { background: linear-gradient(45deg, #e74c3c, #c0392b); }
+        .poll-btn { background: linear-gradient(45deg, #3498db, #2980b9); }
+        .gif-btn { background: linear-gradient(45deg, #9b59b6, #8e44ad); }
 
         .create-post select {
-            padding: 12px;
+            padding: 10px;
             border: 2px solid #ecf0f1;
             border-radius: 10px;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
             background: rgba(245, 245, 247, 0.7);
             transition: var(--transition);
+            width: 100%;
+            margin-bottom: 0.5rem;
         }
 
         .create-post select:focus {
@@ -179,10 +179,10 @@
 
         .post {
             background: var(--card-bg);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 20px;
             box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             position: relative;
             animation: fadeIn 0.5s ease;
         }
@@ -194,8 +194,8 @@
         }
 
         .profile-pic {
-            width: 50px;
-            height: 50px;
+            width: clamp(40px, 10vw, 50px);
+            height: clamp(40px, 10vw, 50px);
             border-radius: 50%;
             margin-right: 1rem;
             background: #ddd url('https://via.placeholder.com/50');
@@ -209,34 +209,59 @@
         .username {
             font-weight: 600;
             color: #2c3e50;
+            font-size: clamp(0.9rem, 3vw, 1rem);
         }
 
         .timestamp {
             color: #7f8c8d;
-            font-size: 0.9rem;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
         }
 
         .category {
             color: var(--primary);
-            font-size: 0.9rem;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
             margin-left: 0.5rem;
         }
 
         .post-content {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: #2c3e50;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
         }
 
         .post-image {
             max-width: 100%;
             border-radius: 12px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .poll-options {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .poll-option {
+            padding: 0.5rem;
+            border: 1px solid #ecf0f1;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .poll-option:hover {
+            background: rgba(24, 119, 242, 0.1);
+        }
+
+        .poll-option.voted {
+            background: rgba(24, 119, 242, 0.3);
+            font-weight: 600;
         }
 
         .action-section {
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
             border-top: 1px solid #ecf0f1;
             padding-top: 1rem;
             flex-wrap: wrap;
@@ -247,11 +272,11 @@
             border: none;
             color: #7f8c8d;
             cursor: pointer;
-            padding: 8px 16px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
             transition: var(--transition);
         }
 
@@ -286,7 +311,7 @@
         }
 
         .reaction {
-            font-size: 1.5rem;
+            font-size: clamp(1rem, 4vw, 1.5rem);
             padding: 0 0.3rem;
             cursor: pointer;
             transition: transform 0.2s ease;
@@ -303,16 +328,16 @@
 
         .comment {
             display: flex;
-            margin: 1rem 0;
+            margin: 0.8rem 0;
             align-items: center;
         }
 
         .comment-input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px 12px;
             border: 2px solid #ecf0f1;
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
             background: rgba(245, 245, 247, 0.7);
             transition: var(--transition);
         }
@@ -327,41 +352,24 @@
             border: none;
             color: #7f8c8d;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             position: absolute;
             top: 1rem;
             transition: var(--transition);
         }
 
-        .delete-btn:hover {
-            color: var(--accent);
-        }
-
-        .edit-btn:hover {
-            color: var(--primary);
-        }
-
-        .report-btn:hover {
-            color: #95a5a6;
-        }
-
-        .delete-btn {
-            right: 1rem;
-        }
-
-        .edit-btn {
-            right: 3rem;
-        }
-
-        .report-btn {
-            right: 5rem;
-        }
+        .delete-btn:hover { color: var(--accent); }
+        .edit-btn:hover { color: var(--primary); }
+        .report-btn:hover { color: #95a5a6; }
+        .delete-btn { right: 1rem; }
+        .edit-btn { right: 3rem; }
+        .report-btn { right: 5rem; }
 
         .save-btn {
             background: linear-gradient(45deg, #f1c40f, #e67e22);
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 8px 12px;
             border-radius: 12px;
             cursor: pointer;
             transition: var(--transition);
@@ -372,21 +380,22 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .friend-requests, .notifications, .trending {
+        .friend-requests, .notifications, .trending, .stories {
             background: var(--card-bg);
             padding: 1.5rem;
             border-radius: 20px;
             box-shadow: var(--shadow);
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             animation: fadeIn 0.5s ease;
         }
 
-        .friend-requests h3, .notifications h3, .trending h3 {
+        .friend-requests h3, .notifications h3, .trending h3, .stories h3 {
             color: var(--primary);
             margin-bottom: 1rem;
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
         }
 
-        .friend-request, .notification, .trending-item {
+        .friend-request, .notification, .trending-item, .story {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -402,12 +411,23 @@
             border-bottom: none;
         }
 
-        .trending-item span {
+        .trending-item span, .story span {
             color: #2c3e50;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
         }
 
         .trending-item .count {
-            font-size: 0.9rem;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+        }
+
+        .story {
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .story:hover {
+            background: rgba(24, 119, 242, 0.1);
         }
 
         @keyframes fadeIn {
@@ -416,11 +436,13 @@
         }
 
         @media (max-width: 480px) {
-            .header, .create-post, .post, .friend-requests, .notifications, .trending { padding: 1.5rem; }
-            h1 { font-size: 2rem; }
-            button, label { padding: 10px 20px; font-size: 0.9rem; min-width: 100px; }
-            .button-group { flex-direction: column; }
-            .post-content { font-size: 0.9rem; }
+            body { padding: 5px; }
+            .header, .create-post, .post, .friend-requests, .notifications, .trending, .stories { padding: 1rem; margin-bottom: 1rem; }
+            .button-group { gap: 0.3rem; }
+            button, label { padding: 8px 15px; min-width: 80px; }
+            .post-header { flex-direction: row; align-items: flex-start; }
+            .action-section { justify-content: space-around; }
+            .reactions { top: -40px; padding: 0.3rem; }
         }
     </style>
 </head>
@@ -428,7 +450,17 @@
     <div class="container">
         <div class="header">
             <h1>NiggaBook</h1>
-            <button class="theme-btn" onclick="toggleDarkMode()">Dark Mode</button>
+            <button class="nigga-mode-btn" onclick="toggleDarkMode()">Nigga Mode</button>
+        </div>
+
+        <div class="stories">
+            <h3>Stories</h3>
+            <div class="story" onclick="viewStory('Sabbir is chilling!')">
+                <span>Sabbir's Story</span>
+            </div>
+            <div class="story" onclick="viewStory('Rahim got a new gadget!')">
+                <span>Rahim's Story</span>
+            </div>
         </div>
 
         <div class="create-post">
@@ -442,6 +474,8 @@
                 </select>
                 <label for="image-upload" class="image-btn">Add Image</label>
                 <input type="file" id="image-upload" accept="image/*" onchange="previewImage(this)">
+                <button class="poll-btn" onclick="createPoll()">Add Poll</button>
+                <button class="gif-btn" onclick="addGif()">Add GIF</button>
                 <button class="live-btn" onclick="goLive()">Go Live</button>
                 <button class="post-btn" onclick="createPost()">Post</button>
             </div>
@@ -459,9 +493,7 @@
                         <div class="timestamp">Just now</div>
                     </div>
                 </div>
-                <div class="post-content">
-                    Having a great day today! The weather is perfect for a walk.
-                </div>
+                <div class="post-content">Having a great day today! The weather is perfect for a walk.</div>
                 <div class="action-section">
                     <button class="action-btn" onclick="toggleLike(this)">
                         <i class="fas fa-thumbs-up"></i> Like <span class="count">0</span>
@@ -502,9 +534,7 @@
                         <div class="timestamp">5 minutes ago</div>
                     </div>
                 </div>
-                <div class="post-content">
-                    Just got the new smartphone, loving the features!
-                </div>
+                <div class="post-content">Just got the new smartphone, loving the features!</div>
                 <div class="action-section">
                     <button class="action-btn" onclick="toggleLike(this)">
                         <i class="fas fa-thumbs-up"></i> Like <span class="count">3</span>
@@ -561,11 +591,9 @@
             <h3>Notifications</h3>
             <div class="notification">
                 <span>Ayesha Khan liked your post</span>
-                <button class="report-btn" onclick="dismissNotification(this)">Dismiss</button>
             </div>
             <div class="notification">
                 <span>Rahim Hossain commented on your post</span>
-                <button class="report-btn" onclick="dismissNotification(this)">Dismiss</button>
             </div>
         </div>
 
@@ -596,13 +624,13 @@
                 ? "linear-gradient(135deg, #2c3e50, #34495e)"
                 : "linear-gradient(135deg, #f5f6fa, #dfe4ea)";
             
-            document.querySelectorAll(".header, .create-post, .post, .friend-requests, .notifications, .trending").forEach(el => {
+            document.querySelectorAll(".header, .create-post, .post, .friend-requests, .notifications, .trending, .stories").forEach(el => {
                 el.style.background = isDarkMode 
                     ? "rgba(52, 73, 94, 0.95)" 
                     : "rgba(255, 255, 255, 0.95)";
             });
 
-            document.querySelectorAll(".username, .post-content, .trending-item span").forEach(el => {
+            document.querySelectorAll(".username, .post-content, .trending-item span, .story span").forEach(el => {
                 el.style.color = isDarkMode ? "#dfe4ea" : "#2c3e50";
             });
 
@@ -614,7 +642,7 @@
                 el.style.borderColor = isDarkMode ? "#627285" : "#ecf0f1";
             });
 
-            document.querySelector(".theme-btn").innerText = isDarkMode ? "Light Mode" : "Dark Mode";
+            document.querySelector(".nigga-mode-btn").innerText = isDarkMode ? "Light Mode" : "Nigga Mode";
         }
 
         function previewImage(input) {
@@ -786,9 +814,8 @@
         }
 
         function goLive() {
-            alert('Going Live! (This is a mock feature - imagine a cool live streaming popup)');
+            alert('Going Live! (Mock feature - imagine a live streaming popup)');
             addNotification('You started a live session');
-            // Simulate live post creation
             const postsContainer = document.getElementById('posts-container');
             const livePost = document.createElement('div');
             livePost.className = 'post';
@@ -831,19 +858,140 @@
             postsContainer.insertBefore(livePost, postsContainer.firstChild);
         }
 
+        function createPoll() {
+            const question = prompt('Enter poll question:');
+            if (!question) return;
+            const options = [];
+            for (let i = 1; i <= 3; i++) {
+                const option = prompt(`Enter option ${i} (or leave blank to stop):`);
+                if (!option) break;
+                options.push(option);
+            }
+            if (options.length < 2) {
+                alert('A poll needs at least 2 options!');
+                return;
+            }
+
+            const postsContainer = document.getElementById('posts-container');
+            const pollPost = document.createElement('div');
+            pollPost.className = 'post';
+            pollPost.innerHTML = `
+                <button class="report-btn" onclick="reportPost(this)">⚠</button>
+                <button class="delete-btn" onclick="deletePost(this)">×</button>
+                <button class="edit-btn" onclick="editPost(this)">✎</button>
+                <div class="post-header">
+                    <div class="profile-pic"></div>
+                    <div class="post-meta">
+                        <div class="username">Sabbir <span class="category">Poll</span></div>
+                        <div class="timestamp">Just now</div>
+                    </div>
+                </div>
+                <div class="post-content">${question}</div>
+                <div class="poll-options">
+                    ${options.map(opt => `<div class="poll-option" onclick="votePoll(this)">${opt} <span class="count">0 votes</span></div>`).join('')}
+                </div>
+                <div class="action-section">
+                    <button class="action-btn" onclick="toggleLike(this)">
+                        <i class="fas fa-thumbs-up"></i> Like <span class="count">0</span>
+                        <div class="reactions">
+                            <span class="reaction" onclick="react(this, '👍')">👍</span>
+                            <span class="reaction" onclick="react(this, '❤️')">❤️</span>
+                            <span class="reaction" onclick="react(this, '😂')">😂</span>
+                            <span class="reaction" onclick="react(this, '😮')">😮</span>
+                            <span class="reaction" onclick="react(this, '😢')">😢</span>
+                            <span class="reaction" onclick="react(this, '😡')">😡</span>
+                        </div>
+                    </button>
+                    <button class="action-btn" onclick="toggleComment(this)">
+                        <i class="fas fa-comment"></i> Comment <span class="count">0</span>
+                    </button>
+                    <button class="action-btn" onclick="toggleShare(this)">
+                        <i class="fas fa-share"></i> Share <span class="count">0</span>
+                    </button>
+                    <button class="save-btn" onclick="savePost(this)">Save</button>
+                </div>
+                <div class="comments-section" style="display: none;">
+                    <input type="text" class="comment-input" placeholder="Write a comment..." 
+                           onkeypress="addComment(event, this)">
+                </div>
+            `;
+            postsContainer.insertBefore(pollPost, postsContainer.firstChild);
+            addNotification('You created a poll');
+            updateTrending('Poll');
+        }
+
+        function votePoll(option) {
+            if (option.classList.contains('voted')) return;
+            const options = option.parentElement.querySelectorAll('.poll-option');
+            options.forEach(opt => opt.classList.remove('voted'));
+            option.classList.add('voted');
+            const countElement = option.querySelector('.count');
+            let count = parseInt(countElement.textContent) + 1;
+            countElement.textContent = `${count} votes`;
+            addNotification('You voted in a poll');
+        }
+
+        function addGif() {
+            const gifUrl = prompt('Enter GIF URL (e.g., from GIPHY):');
+            if (!gifUrl) return;
+
+            const postsContainer = document.getElementById('posts-container');
+            const gifPost = document.createElement('div');
+            gifPost.className = 'post';
+            gifPost.innerHTML = `
+                <button class="report-btn" onclick="reportPost(this)">⚠</button>
+                <button class="delete-btn" onclick="deletePost(this)">×</button>
+                <button class="edit-btn" onclick="editPost(this)">✎</button>
+                <div class="post-header">
+                    <div class="profile-pic"></div>
+                    <div class="post-meta">
+                        <div class="username">Sabbir <span class="category">GIF</span></div>
+                        <div class="timestamp">Just now</div>
+                    </div>
+                </div>
+                <div class="post-content">Check out this cool GIF!</div>
+                <img class="post-image" src="${gifUrl}" alt="GIF">
+                <div class="action-section">
+                    <button class="action-btn" onclick="toggleLike(this)">
+                        <i class="fas fa-thumbs-up"></i> Like <span class="count">0</span>
+                        <div class="reactions">
+                            <span class="reaction" onclick="react(this, '👍')">👍</span>
+                            <span class="reaction" onclick="react(this, '❤️')">❤️</span>
+                            <span class="reaction" onclick="react(this, '😂')">😂</span>
+                            <span class="reaction" onclick="react(this, '😮')">😮</span>
+                            <span class="reaction" onclick="react(this, '😢')">😢</span>
+                            <span class="reaction" onclick="react(this, '😡')">😡</span>
+                        </div>
+                    </button>
+                    <button class="action-btn" onclick="toggleComment(this)">
+                        <i class="fas fa-comment"></i> Comment <span class="count">0</span>
+                    </button>
+                    <button class="action-btn" onclick="toggleShare(this)">
+                        <i class="fas fa-share"></i> Share <span class="count">0</span>
+                    </button>
+                    <button class="save-btn" onclick="savePost(this)">Save</button>
+                </div>
+                <div class="comments-section" style="display: none;">
+                    <input type="text" class="comment-input" placeholder="Write a comment..." 
+                           onkeypress="addComment(event, this)">
+                </div>
+            `;
+            postsContainer.insertBefore(gifPost, postsContainer.firstChild);
+            addNotification('You posted a GIF');
+            updateTrending('GIF');
+        }
+
+        function viewStory(content) {
+            alert(`Story: ${content}`);
+            addNotification('You viewed a story');
+        }
+
         function addNotification(message) {
             const notifications = document.querySelector('.notifications');
             const newNotification = document.createElement('div');
             newNotification.className = 'notification';
-            newNotification.innerHTML = `
-                <span>${message}</span>
-                <button class="report-btn" onclick="dismissNotification(this)">Dismiss</button>
-            `;
+            newNotification.innerHTML = `<span>${message}</span>`;
             notifications.insertBefore(newNotification, notifications.children[1] || notifications.lastElementChild.nextSibling);
-        }
-
-        function dismissNotification(button) {
-            button.parentElement.remove();
         }
 
         function updateTrending(category) {
@@ -853,8 +1001,8 @@
             items.forEach(item => {
                 if (item.querySelector('span').textContent === `#${category}`) {
                     const countElement = item.querySelector('.count');
-                    let count = parseInt(countElement.textContent);
-                    countElement.textContent = `${count + 1} posts`;
+                    let count = parseInt(countElement.textContent) + 1;
+                    countElement.textContent = `${count} posts`;
                     updated = true;
                 }
             });
