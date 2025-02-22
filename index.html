@@ -148,9 +148,9 @@
         .image-btn { background: linear-gradient(45deg, #2ecc71, #27ae60); }
         .nigga-mode-btn { 
             background: linear-gradient(45deg, #8e44ad, #732d91); 
-            padding: 10px 20px; /* Matches .post-btn */
-            min-width: 100px; /* Matches .post-btn */
-            font-size: clamp(0.8rem, 2.5vw, 1rem); /* Matches .post-btn */
+            padding: 10px 20px;
+            min-width: 100px;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
         }
         .report-btn { background: linear-gradient(45deg, #95a5a6, #7f8c8d); }
         .live-btn { background: linear-gradient(45deg, #e74c3c, #c0392b); }
@@ -450,7 +450,6 @@
     <div class="container">
         <div class="header">
             <h1>NiggaBook</h1>
-            <button class="nigga-mode-btn" onclick="toggleDarkMode()">Nigga Mode</button>
         </div>
 
         <div class="stories">
@@ -477,6 +476,7 @@
                 <button class="poll-btn" onclick="createPoll()">Add Poll</button>
                 <button class="gif-btn" onclick="addGif()">Add GIF</button>
                 <button class="live-btn" onclick="goLive()">Go Live</button>
+                <button class="nigga-mode-btn" onclick="toggleDarkMode()">Nigga Mode</button>
                 <button class="post-btn" onclick="createPost()">Post</button>
             </div>
         </div>
